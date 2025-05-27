@@ -7,10 +7,21 @@ import modelo.*;
 public class DaoPersonaje {
     
     private Connection conn;
-
+    private static DaoPersonaje instance = null;
+    
     public DaoPersonaje() throws SQLException {
         conn = DBConnection.getConnection();
     }
+    
+	public static DaoPersonaje getInstance() throws SQLException{
+		
+		if(instance == null) {
+			instance = new DaoPersonaje();
+		}
+		
+		return instance;
+	}
+	
     
     public List<Protagonista> obtenerProtagonistas() throws SQLException {
         List<Protagonista> personajesProtagonistas = new ArrayList<>();

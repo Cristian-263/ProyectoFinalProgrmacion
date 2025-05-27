@@ -3,15 +3,19 @@ package modelo;
 public class TipoTerreno {
 	private int id;
 	private String nombre;
-	
+	private int bonusAtaque;
+	private int bonusDefensa;
 
-	//Constructor
-	public TipoTerreno(int id, String nombre ) {
+	// Constructor
+	public TipoTerreno(int id, String nombre, int bonusAtaque, int bonusDefensa) {
 		this.id = id;
 		this.nombre = nombre;
+		this.bonusAtaque = bonusAtaque;
+		this.bonusDefensa = bonusDefensa;
+
 	}
 
-	//getters y setters
+	// getters y setters
 	public int getId() {
 		return id;
 	}
@@ -19,30 +23,19 @@ public class TipoTerreno {
 	public String getNombre() {
 		return nombre;
 	}
-	public int getPenalizacionAtaqueTerreno() {
-		if(nombre.equalsIgnoreCase("rocoso")) {
-			return 1;
-		} else if(nombre.equalsIgnoreCase("montañoso")) {
-			return 2;
-		} else {
-			return 0;
-		}
-		
+
+	public int getBonusAtaque() {
+		return bonusAtaque;
 	}
-	public int getPenalizacionDefensaTerreno() {
-		if(nombre.equalsIgnoreCase("rocoso")) {
-			return 1;
-		} else if(nombre.equalsIgnoreCase("montañoso")) {
-			return 2;
-		} else {
-			return 0;
-		}
-		
+
+	public int getBonusDefensa() {
+		return bonusDefensa;
 	}
-	 @Override
-	    public String toString() {
-	        return nombre + " (penalización ataque: " + getPenalizacionAtaqueTerreno() + ")"
-	        	+ "\n" + nombre + " (penalización ataque: " + getPenalizacionDefensaTerreno() + ")";
-	    }
+
+	@Override
+	public String toString() {
+		return nombre + " (Bonus ataque: " + getBonusAtaque() + ")" + "\n" + nombre
+				+ " (Bonus defensa: " + getBonusDefensa() + ")";
+	}
 
 }
