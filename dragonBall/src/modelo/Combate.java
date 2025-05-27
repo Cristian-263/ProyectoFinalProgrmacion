@@ -111,10 +111,48 @@ public class Combate {
 		System.out.println("Ataque usado: " + ataqueElegido.getNombre());
 		System.out.println("Daño final calculado: " + danhoFinal);
 	}
+//CALCULAR ATAQUE - DEFENSA
+	private int calcularDanhoNeto(int danhoBase, int bonusAtaque, int bonusDefensa) {
+	    int danhoNeto = danhoBase + bonusAtaque - bonusDefensa;
+//	    if (danhoNeto < 0) {
+//	        return 0;
+//	    } else {
+//	        return danhoNeto;
+//	    }
+	    return Math.max(0, danhoNeto);  
+	}
+
+	//RESTAR VIDA
+	private void restarVida(PersonajeCombatiente defensor, int danho) {
+	    int vidaActual = defensor.getVida();
+	    int vidaRestante;
+
+	    if (vidaActual - danho < 0) {
+	        vidaRestante = 0;
+	    } else {
+	        vidaRestante = vidaActual - danho;
+	    }
+
+	    defensor.setVida(vidaRestante);
+	    System.out.println(defensor.getNombre() + " ha recibido " + danho + " de daño. Vida restante: " + vidaRestante);
+	}
+
 
 	public void turnoProtagonista() {
 		System.out.println("\n Es tu turno ---");
 		System.out.println("Vida actual del enemigo: " + enemigo.getVida());
+		//El jugador escoge ataque.
+		Ataque ataque = elegirAtaqueJugador();
+		//Se determina si impacta total, parcial o fallo.
+		int danhoBase = obtenerDanhoPorImpacto(ataque);
+		//Se suman bonus del entorno.
+	    int bonusAtaque = calcularBonusAtaque();
+	    
+	    int bonusDefensa = calcularBonusDefensa();
+	    //Calculamos el daño neto y se aplica al enemigo.
+	    int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
+	    //Se imprime resultado.
+	    restarVida(enemigo, danhoFinal);
 	}
 
 	public void turnoEnemigo() {

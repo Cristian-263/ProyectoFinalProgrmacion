@@ -1,5 +1,7 @@
 package modelo;
 
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class Juego {
@@ -7,7 +9,10 @@ public class Juego {
     private List<Protagonista> personajesProtagonistas;
     private List<PersonajeSecundario> personajesSecundarios;
     private List<PersonajeCombatiente> personajesEnemigos;
-
+ 
+    
+ 
+  
     public Juego() {
         
     }
