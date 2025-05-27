@@ -1,27 +1,25 @@
 package modelo;
 
-import java.sql.SQLException;
 import java.util.List;
-
-import daoDragonBall.DaoPersonaje;
 
 public class Juego {
 
     private List<Protagonista> personajesProtagonistas;
     private List<PersonajeSecundario> personajesSecundarios;
     private List<PersonajeCombatiente> personajesEnemigos;
-    
-    public Juego() throws SQLException {
+
+    public Juego() {
         
     }
-
-    public void inicializar() throws SQLException {
-        DaoPersonaje dao = new DaoPersonaje();
-        personajesProtagonistas = dao.obtenerProtagonistas();
-        personajesSecundarios = dao.obtenerSecundarios();
-        personajesEnemigos = dao.obtenerEnemigos();
+    
+ // Asignamos los datos cargados en DatosJuego
+    public void inicializar() {
+        personajesProtagonistas = DatosJuego.protagonistas;
+        personajesSecundarios = DatosJuego.secundarios;
+        personajesEnemigos = DatosJuego.enemigos;
     }
- // IMPRIMIR PROTAGONISTA
+
+    // IMPRIMIR PROTAGONISTAS
     public void mostrarProtagonistas() {
         System.out.println("=== PROTAGONISTAS ===");
         for (Protagonista prota : personajesProtagonistas) {
@@ -34,7 +32,6 @@ public class Juego {
             System.out.println("---------------------------");
         }
     }
-
 
     // IMPRIMIR SECUNDARIOS
     public void mostrarSecundarios() {
@@ -50,7 +47,6 @@ public class Juego {
         }
     }
 
-
     // IMPRIMIR ENEMIGOS
     public void mostrarEnemigos() {
         System.out.println("=== ENEMIGOS ===");
@@ -64,7 +60,4 @@ public class Juego {
             System.out.println("---------------------------");
         }
     }
-
-
-    
 }
