@@ -6,12 +6,7 @@ import java.sql.*;
 
 import java.util.Scanner;
 
-import daoDragonBall.DaoAtaque;
-import daoDragonBall.DaoCondicionAtmosferica;
-import daoDragonBall.DaoMomentoDia;
-import daoDragonBall.DaoPersonaje;
-import daoDragonBall.DaoTipoTerreno;
-import daoDragonBall.DaoUsuario;
+import daoDragonBall.*;
 
 public class Main {
 
@@ -19,11 +14,17 @@ public class Main {
 	
 	DatosJuego.cargarDatos();  
 	
-     Juego juego = new Juego();
-     juego.inicializar();
-     juego.mostrarEnemigos();
-     juego.mostrarProtagonistas();
-     juego.mostrarSecundarios();
+	Menus menu = new Menus();
+	menu.menuLogin();
+	
+	Juego juego = new Juego();
+	juego.inicializar();
+	juego.mostrarProtagonistas();
+	juego.mostrarEnemigos();
+	juego.mostrarEnemigos();
+	
+	
+     
      
 
  }
