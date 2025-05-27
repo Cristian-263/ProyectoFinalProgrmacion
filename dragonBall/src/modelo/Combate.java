@@ -111,7 +111,8 @@ public class Combate {
 		System.out.println("Ataque usado: " + ataqueElegido.getNombre());
 		System.out.println("Daño final calculado: " + danhoFinal);
 	}
-//CALCULAR ATAQUE - DEFENSA
+	
+	//CALCULAR ATAQUE - DEFENSA
 	private int calcularDanhoNeto(int danhoBase, int bonusAtaque, int bonusDefensa) {
 	    int danhoNeto = danhoBase + bonusAtaque - bonusDefensa;
 //	    if (danhoNeto < 0) {
@@ -137,7 +138,7 @@ public class Combate {
 	    System.out.println(defensor.getNombre() + " ha recibido " + danho + " de daño. Vida restante: " + vidaRestante);
 	}
 
-
+	//ATACA EL RPOTAGONISTA
 	public void turnoProtagonista() {
 		System.out.println("\n Es tu turno ---");
 		System.out.println("Vida actual del enemigo: " + enemigo.getVida());
@@ -155,8 +156,24 @@ public class Combate {
 	    restarVida(enemigo, danhoFinal);
 	}
 
+	//ATACA EL ENEMIGO(AUTOMÁTICO)
 	public void turnoEnemigo() {
 		System.out.println("\n--- Turno de " + enemigo.getNombre() + " ---");
 		System.out.println("Vida actual del jugador: " + protagonista.getVida());
+		 // 1. Elegir ataque aleatorio del enemigo
+	    Ataque ataque = elegirAtaqueAleatorio(enemigo);
+
+	    // 2. Calcular daño base por impacto
+	    int danhoBase = obtenerDanhoPorImpacto(ataque);
+
+	    // 3. Calcular bonificaciones del entorno
+	    int bonusAtaque = calcularBonusAtaque();
+	    int bonusDefensa = calcularBonusDefensa();
+
+	    // 4. Calcular daño neto
+	    int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
+
+	    // 5. Aplicar daño al protagonista
+	    restarVida(protagonista, danhoFinal);
 	}
 }
