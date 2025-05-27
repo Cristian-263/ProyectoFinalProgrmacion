@@ -24,7 +24,7 @@ public class DaoAtaque {
 		return instance;
 	}
 	
-	//OBTENER EL ATAQUE DE UN PERSONAJE (PERSONAJE = PERSONAJE ID)
+	//OBTENER EL ATAQUE DE UN PERSONAJE 
 	public List<Ataque> obtenerAtaquesPorPersonaje(int personajeId) throws SQLException {
 		
 		String obtenerAtaquePorPersonaje = "{CALL ObtenerAtaquesPorPersonaje(?)}";
