@@ -3,11 +3,14 @@ package modelo;
 public class CondicionAtmosferica {
 	private int id;
 	private String nombre;
-	
+	private int bonusAtaque;
+	private int bonusDefensa;
 	//Constructor
-	public CondicionAtmosferica(int id, String nombre) {
+	public CondicionAtmosferica(int id, String nombre, int bonusAtaque, int bonusDefensa) {
 		this.id = id;
 		this.nombre = nombre;
+		this.bonusAtaque = bonusAtaque;
+		this.bonusDefensa = bonusDefensa;
 	}
 
 	//getters y setters
@@ -19,19 +22,20 @@ public class CondicionAtmosferica {
 		return nombre;
 	}
 	
-	public int getPenalizacionAtaqueAtmosfera() {
-		if(nombre.equalsIgnoreCase("lluvia")) {
-			return 1;
-		} else if(nombre.equalsIgnoreCase("nieve")) {
-			return 2;
-		} else {
-			return 0;
-		}
-		
+	public int getBonusAtaque() {
+		return bonusAtaque;
 	}
-	 @Override
-	    public String toString() {
-	        return nombre + " (penalización ataque: " + getPenalizacionAtaqueAtmosfera() + ")";
-	    }
+
+	public int getBonusDefensa() {
+		return bonusDefensa;
+	}
+
+	@Override
+	public String toString() {
+		return nombre + " (Bonus ataque: " + getBonusAtaque() + ")" + "\n" + nombre
+				+ " (Bonus defensa: " + getBonusDefensa() + ")";
+	}
+	
+
 
 }
