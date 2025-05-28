@@ -3,6 +3,7 @@ package modelo;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Juego {
 
@@ -23,6 +24,53 @@ public class Juego {
         personajesSecundarios = DatosJuego.secundarios;
         personajesEnemigos = DatosJuego.enemigos;
     }
+    
+    
+    private Protagonista buscarProtagonistaPorNombre(String nombre) {
+        for (Protagonista prota : DatosJuego.protagonistas) {
+            if (prota.getNombre().equalsIgnoreCase(nombre)) {
+                return prota;
+            }
+        }
+        return null; // solo si no se encuentra (no debería pasar si los datos están bien)
+    }
+    
+    public Protagonista elegirProtagonistaInicial() {
+        Scanner sc = new Scanner(System.in);
+        Protagonista protagonista = null;
+        boolean valido = false;
+
+        while (!valido) {
+            System.out.println("Elige tu personaje para comenzar la aventura:");
+            System.out.println("1. Goku");
+            System.out.println("2. Vegeta");
+            System.out.println("3. Majin Boo");
+
+            int opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
+
+            switch (opcion) {
+                case 1:
+                    protagonista = buscarProtagonistaPorNombre("Goku");
+                    valido = true;
+                    break;
+                case 2:
+                    protagonista = buscarProtagonistaPorNombre("Vegeta");
+                    valido = true;
+                    break;
+                case 3:
+                    protagonista = buscarProtagonistaPorNombre("Majin Boo");
+                    valido = true;
+                    break;
+                default:
+                    System.out.println("❌ Opción inválida. Por favor, elige 1, 2 o 3.");
+            }
+        }
+
+        System.out.println("✅ Has elegido a: " + protagonista.getNombre());
+        return protagonista;
+    }
+
 
     // IMPRIMIR PROTAGONISTAS
     public void mostrarProtagonistas() {
