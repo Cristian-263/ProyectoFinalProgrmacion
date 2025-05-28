@@ -34,6 +34,6 @@ public class Menus {
 
 			dao.loginUsuario(nombreUsuario, password);
 		}
-		sc.close();
+		
 	}
 }

@@ -176,4 +176,54 @@ public class Combate {
 	    // 5. Aplicar daño al protagonista
 	    restarVida(protagonista, danhoFinal);
 	}
+	
+	//IMPRIMIR VIDA AMBOS
+	private void imprimirVida() {
+	    System.out.println("\n====== ESTADO ACTUAL ======");
+	    System.out.println(protagonista.getNombre() + " - Vida: " + protagonista.getVida());
+	    System.out.println(enemigo.getNombre() + " - Vida: " + enemigo.getVida());
+	    System.out.println("===========================\n");
+	}
+	
+	//MÉTODO PARA COMPROBAR VIDAS
+	private boolean finCombate() {
+	    if (protagonista.getVida() <= 1) {
+	        return true;
+	    }
+	    if (enemigo.getVida() <= 1) {
+	        return true;
+	    }
+	    return false;
+	}
+	
+	//COMBATE 
+	public void combatir() {
+	    System.out.println("\n🔥 ¡Comienza el combate!");
+	    System.out.println("Entorno: " + condicionAtmos.getNombre() + ", " +
+	                       terreno.getNombre() + ", " +
+	                       momentoDia.getNombre());
+
+	    // Bucle del combate: se ejecuta mientras ambos estén vivos
+	    while (!finCombate()) {
+	        imprimirVida();
+
+	        // Turno del jugador
+	        turnoProtagonista();
+
+	        // Solo se ejecuta el turno del enemigo si aún sigue el combate
+	        if (!finCombate()) {
+	            turnoEnemigo();
+	        }
+	    }
+
+	    if (protagonista.getVida()<=0) {
+	    	System.out.println(enemigo.getNombre()+" te ha derrotado");
+	    } else {
+	    	System.out.println("Has derrotado a " + enemigo.getNombre());
+	    }
+	    
+	}
+
+
+
 }
