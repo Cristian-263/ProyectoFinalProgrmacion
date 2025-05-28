@@ -20,16 +20,45 @@ public class Main {
 	Juego juego = new Juego();
 	juego.inicializar();
 	juego.mostrarProtagonistas();
-	juego.mostrarEnemigos();
-	juego.mostrarEnemigos();
+	
+	//EL USUARIO ELIGE SU PROTAGONISTA
+	Protagonista protagonista = juego.elegirProtagonistaInicial(); 
+	
+	//INICIAMOS LA HISTORIA QUE ELIJA
+	switch (protagonista.getNombre().toLowerCase()) {
+	    case "goku":
+	        new HistoriaGoku(protagonista).iniciar();
+	        break;
+	    case "vegeta":
+	        new HistoriaVegeta(protagonista).iniciar();
+	        break;
+	    case "majin boo":
+	        new HistoriaBoo(protagonista).iniciar();
+	        break;
+	}
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
 	
 	try {
         // 1. Cargar todos los datos del juego desde la base de datos
         DatosJuego.cargarDatos();
         System.out.println("✅ Datos del juego cargados.\n");
-
-        // 2. Seleccionar un protagonista y un enemigo
-        Protagonista protagonista = DatosJuego.protagonistas.get(0); // Por ejemplo, Goku
+        
+        
+    	//CÓMO FUNCIONA EL COMBATE
+        // 1. Seleccionar un protagonista y un enemigo
+        
+        Protagonista protagonista = juego.elegirProtagonistaInicial();
         PersonajeCombatiente enemigo = DatosJuego.enemigos.get(0);  // Por ejemplo, Freezer
 
         // 3. Crear un combate con entorno aleatorio (ya lo hace el constructor)
