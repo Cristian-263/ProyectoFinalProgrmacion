@@ -1,6 +1,7 @@
 package modelo;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class Protagonista extends PersonajeCombatiente {
 
@@ -11,7 +12,7 @@ public class Protagonista extends PersonajeCombatiente {
     public Protagonista() {
     }
 
-    public Protagonista(String nombre, int vida, List<Ataque> listaAtaques) {
+    public Protagonista(String nombre, int vida, ArrayList<Ataque> listaAtaques) {
         super(nombre, vida, listaAtaques); 
         
     }
