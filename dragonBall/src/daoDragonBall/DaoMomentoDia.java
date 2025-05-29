@@ -21,8 +21,8 @@ public class DaoMomentoDia {
         return instance;
     }
     
-	public List<MomentoDia> obtenerMomentoDia() throws SQLException{
-		List<MomentoDia> lista = new ArrayList<>();
+	public ArrayList<MomentoDia> obtenerMomentoDia() throws SQLException{
+		ArrayList<MomentoDia> lista = new ArrayList<>();
 		String sql = "SELECT id, nombre, bonus_ataque, bonus_defensa FROM momento_dia";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		ResultSet rs = statement.executeQuery();
