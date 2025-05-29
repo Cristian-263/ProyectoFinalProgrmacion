@@ -12,7 +12,8 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 	
-	DatosJuego.cargarDatos();  
+	DatosJuego datos = new DatosJuego();
+	datos.cargarDatos();  
 	
 	Menus menu = new Menus();
 	menu.menuLogin();
