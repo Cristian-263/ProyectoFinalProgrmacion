@@ -25,7 +25,7 @@ public class DaoAtaque {
 	}
 	
 	//OBTENER EL ATAQUE DE UN PERSONAJE 
-	public List<Ataque> obtenerAtaquesPorPersonaje(int personajeId) throws SQLException {
+	public ArrayList<Ataque> obtenerAtaquesPorPersonaje(int personajeId) throws SQLException {
 		
 		String obtenerAtaquePorPersonaje = "{CALL ObtenerAtaquesPorPersonaje(?)}";
 		
@@ -35,7 +35,7 @@ public class DaoAtaque {
 		
 		ResultSet rs = statement.executeQuery();
 		
-		List<Ataque> listaAtaques = new ArrayList<>();
+		ArrayList<Ataque> listaAtaques = new ArrayList<>();
 
 		 while (rs.next()) {
 		        Ataque ataque = new Ataque();

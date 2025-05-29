@@ -9,7 +9,7 @@ public class HistoriaVegeta {
 	    }
 
 	    public void iniciar() {
-	        System.out.println("🌟 Comienza la historia de Goku...");
+	        System.out.println("🌟 Comienza la historia de Vegeta...");
 	        
 	    }
 }

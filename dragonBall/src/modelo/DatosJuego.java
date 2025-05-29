@@ -3,26 +3,26 @@ package modelo;
 import daoDragonBall.*;
 
 import java.sql.*;
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class DatosJuego {
 
-    public static List<Protagonista> protagonistas;
-    public static List<PersonajeCombatiente> enemigos;
-    public static List<PersonajeSecundario> secundarios;
+    public static ArrayList<Protagonista> protagonistas;
+    public static ArrayList<PersonajeCombatiente> enemigos;
+    public static ArrayList<PersonajeSecundario> secundarios;
 
-    public static List<CondicionAtmosferica> condicionesAtmosfericas;
-    public static List<TipoTerreno> tiposTerreno;
-    public static List<MomentoDia> momentosDia;
+    public static ArrayList<CondicionAtmosferica> condicionesAtmosfericas;
+    public static ArrayList<TipoTerreno> tiposTerreno;
+    public static ArrayList<MomentoDia> momentosDia;
 
-    public static void cargarDatos() throws SQLException {
-        
-        DaoPersonaje daoPersonaje = DaoPersonaje.getInstance();
-        protagonistas = daoPersonaje.obtenerProtagonistas();
-        enemigos = daoPersonaje.obtenerEnemigos();
-        secundarios = daoPersonaje.obtenerSecundarios();
-        condicionesAtmosfericas = DaoCondicionAtmosferica.getInstance().obtenerCondicionAtmosferica();
-        tiposTerreno = DaoTipoTerreno.getInstance().obtenerTipoTerreno();
-        momentosDia = DaoMomentoDia.getInstance().obtenerMomentoDia();
+    public  void cargarDatos() throws SQLException {
+
+    	protagonistas = new ArrayList<>(DaoPersonaje.getInstance().obtenerProtagonistas());
+    	enemigos = new ArrayList<>(DaoPersonaje.getInstance().obtenerEnemigos());
+    	secundarios = new ArrayList<>(DaoPersonaje.getInstance().obtenerSecundarios());
+    	condicionesAtmosfericas = new ArrayList<>(DaoCondicionAtmosferica.getInstance().obtenerCondicionAtmosferica());
+    	tiposTerreno = new ArrayList<>(DaoTipoTerreno.getInstance().obtenerTipoTerreno());
+    	momentosDia = new ArrayList<>(DaoMomentoDia.getInstance().obtenerMomentoDia());
     }
 }
