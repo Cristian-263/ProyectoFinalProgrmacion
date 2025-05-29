@@ -2,14 +2,14 @@ package modelo;
 
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Juego {
 
-    private List<Protagonista> personajesProtagonistas;
-    private List<PersonajeSecundario> personajesSecundarios;
-    private List<PersonajeCombatiente> personajesEnemigos;
+    private ArrayList<Protagonista> personajesProtagonistas;
+    private ArrayList<PersonajeSecundario> personajesSecundarios;
+    private ArrayList<PersonajeCombatiente> personajesEnemigos;
  
     
  
@@ -32,7 +32,7 @@ public class Juego {
                 return prota;
             }
         }
-        return null; // solo si no se encuentra (no debería pasar si los datos están bien)
+        return null;
     }
     
     public Protagonista elegirProtagonistaInicial() {

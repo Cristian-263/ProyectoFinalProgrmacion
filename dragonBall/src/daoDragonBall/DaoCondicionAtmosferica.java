@@ -21,8 +21,9 @@ public class DaoCondicionAtmosferica {
         return instance;
     }
 	
-	public List<CondicionAtmosferica> obtenerCondicionAtmosferica() throws SQLException{
-		List<CondicionAtmosferica> lista = new ArrayList<>();
+	public ArrayList<CondicionAtmosferica> obtenerCondicionAtmosferica() throws SQLException{
+		
+		ArrayList<CondicionAtmosferica> lista = new ArrayList<>();
 		
         String sql = "SELECT id, nombre, bonus_ataque, bonus_defensa FROM condiciones_atmosfericas";
         PreparedStatement statement = conn.prepareStatement(sql);

@@ -23,8 +23,8 @@ public class DaoPersonaje {
 	}
 	
     
-    public List<Protagonista> obtenerProtagonistas() throws SQLException {
-        List<Protagonista> personajesProtagonistas = new ArrayList<>();
+    public ArrayList<Protagonista> obtenerProtagonistas() throws SQLException {
+        ArrayList<Protagonista> personajesProtagonistas = new ArrayList<>();
 
         String obtenerProtagonistas = "SELECT id, nombre, vida FROM personajes WHERE tipo = 'protagonista'";
         PreparedStatement statement = conn.prepareStatement(obtenerProtagonistas);
@@ -37,7 +37,7 @@ public class DaoPersonaje {
             String nombre = rs.getString("nombre");
             int vida = rs.getInt("vida");
 
-            List<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
+            ArrayList<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
 
             Protagonista protagonista = new Protagonista(nombre, vida, ataques);
             personajesProtagonistas.add(protagonista);

@@ -27,9 +27,9 @@ public class Menus {
 
 			dao.registrarUsuario(nombreUsuario, password);
 		} else {
-			System.out.println("Introcuce el nombre de usuario que desees");
+			System.out.println("Introduce tu nombre de usuario");
 			String nombreUsuario = sc.nextLine();
-			System.out.println("Elige tu contraseña");
+			System.out.println("Introduce tu contraseña");
 			String password = sc.nextLine();
 
 			dao.loginUsuario(nombreUsuario, password);

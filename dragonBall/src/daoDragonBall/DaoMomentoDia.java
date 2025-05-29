@@ -10,7 +10,7 @@ public class DaoMomentoDia {
 	private Connection conn;
 	private static DaoMomentoDia instance = null;
 	
-	public DaoMomentoDia() throws SQLException{
+	private DaoMomentoDia() throws SQLException{
 		conn = DBConnection.getConnection();
 	}
 	
