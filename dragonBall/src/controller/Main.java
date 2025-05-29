@@ -20,7 +20,8 @@ public class Main {
 	
 	Juego juego = new Juego();
 	juego.inicializar();
-	juego.mostrarProtagonistas();
+	
+	juego.imprimirProtagonistas();
 	
 	//EL USUARIO ELIGE SU PROTAGONISTA
 	Protagonista protagonista = juego.elegirProtagonistaInicial(); 
