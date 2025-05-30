@@ -5,11 +5,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import daoDragonBall.DaoCondicionAtmosferica;
+import daoDragonBall.DaoMomentoDia;
+import daoDragonBall.DaoPersonaje;
+import daoDragonBall.DaoTipoTerreno;
+
 public class Juego {
 
     private ArrayList<Protagonista> personajesProtagonistas;
     private ArrayList<PersonajeSecundario> personajesSecundarios;
     private ArrayList<PersonajeCombatiente> personajesEnemigos;
+    private ArrayList<CondicionAtmosferica> condicionesAtmosfericas;
+    private ArrayList<TipoTerreno> tiposTerreno;
+    private ArrayList<MomentoDia> momentosDia;
  
     
  
@@ -18,16 +26,32 @@ public class Juego {
         
     }
     
- // Asignamos los datos cargados en DatosJuego
-    public void inicializar() {
-        personajesProtagonistas = DatosJuego.protagonistas;
-        personajesSecundarios = DatosJuego.secundarios;
-        personajesEnemigos = DatosJuego.enemigos;
+    public ArrayList<CondicionAtmosferica> getCondicionesAtmosfericas() {
+        return condicionesAtmosfericas;
+    }
+
+    public ArrayList<TipoTerreno> getTiposTerreno() {
+        return tiposTerreno;
+    }
+
+    public ArrayList<MomentoDia> getMomentosDia() {
+        return momentosDia;
+    }
+    
+ // ASIGNAMOS LOS DATOS CARGADOS EN DATOS JUEGO DatosJuego
+    public void inicializar() throws SQLException {
+        personajesProtagonistas =  new ArrayList<>(DaoPersonaje.getInstance().obtenerProtagonistas());;
+        personajesSecundarios = new ArrayList<>(DaoPersonaje.getInstance().obtenerSecundarios());
+        personajesEnemigos = new ArrayList<>(DaoPersonaje.getInstance().obtenerEnemigos());
+        condicionesAtmosfericas = new ArrayList<>(DaoCondicionAtmosferica.getInstance().obtenerCondicionAtmosferica());
+    	tiposTerreno = new ArrayList<>(DaoTipoTerreno.getInstance().obtenerTipoTerreno());
+    	momentosDia = new ArrayList<>(DaoMomentoDia.getInstance().obtenerMomentoDia());
+        
     }
     
     
     private Protagonista buscarProtagonistaPorNombre(String nombre) {
-        for (Protagonista prota : DatosJuego.protagonistas) {
+        for (Protagonista prota : personajesProtagonistas) {
             if (prota.getNombre().equalsIgnoreCase(nombre)) {
                 return prota;
             }
@@ -47,7 +71,7 @@ public class Juego {
             System.out.println("3. Majin Boo");
 
             int opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+            sc.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -113,4 +137,7 @@ public class Juego {
             System.out.println("---------------------------");
         }
     }
+    
+
+
 }

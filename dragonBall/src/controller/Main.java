@@ -12,8 +12,8 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 	
-	DatosJuego datos = new DatosJuego();
-	datos.cargarDatos();  
+	
+	  
 	
 	Menus menu = new Menus();
 	menu.menuLogin();
@@ -39,7 +39,7 @@ public class Main {
 	        break;
 	}
 	
-	
+	/*Combate combate = new Combate(protagonista, enemigo, juego);*/
 	
 
 
