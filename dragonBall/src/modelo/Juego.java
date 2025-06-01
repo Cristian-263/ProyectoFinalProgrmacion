@@ -95,6 +95,17 @@ public class Juego {
         return protagonista;
     }
 
+    public ArrayList<PersonajeCombatiente> getPersonajesEnemigos() {
+        return personajesEnemigos;
+    }
+    public PersonajeCombatiente buscarEnemigoPorNombre(String nombre) {
+        for (PersonajeCombatiente enemigo : personajesEnemigos) {
+            if (enemigo.getNombre().equalsIgnoreCase(nombre)) {
+                return enemigo;
+            }
+        }
+        return null; 
+    }
 
     // IMPRIMIR PROTAGONISTAS
     public void imprimirProtagonistas() {
