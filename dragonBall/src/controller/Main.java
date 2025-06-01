@@ -25,7 +25,12 @@ public class Main {
 	
 	//EL USUARIO ELIGE SU PROTAGONISTA
 	Protagonista protagonista = juego.elegirProtagonistaInicial(); 
-	
+	PersonajeCombatiente enemigo = juego.buscarEnemigoPorNombre("Majin Boo");
+	System.out.println(enemigo);
+	System.out.println("Vida protagonista: " + protagonista.getVida());
+	System.out.println("Vida enemigo: " + enemigo.getVida());
+	Combate combate = new Combate(protagonista, enemigo, juego);
+	combate.combatir();
 	//INICIAMOS LA HISTORIA QUE ELIJA
 	switch (protagonista.getNombre().toLowerCase()) {
 	    case "goku":
@@ -37,8 +42,10 @@ public class Main {
 	    case "majin boo":
 	        new HistoriaBoo(protagonista).iniciar();
 	        break;
+	        
 	}
-	
+
+
 	/*Combate combate = new Combate(protagonista, enemigo, juego);*/
 	
 
