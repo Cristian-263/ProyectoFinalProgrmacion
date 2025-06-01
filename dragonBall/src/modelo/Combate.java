@@ -11,13 +11,13 @@ public class Combate {
 	private MomentoDia momentoDia;
 
 	// Constructor
-	public Combate(Protagonista protagonista, PersonajeCombatiente enemigo) {
+	public Combate(Protagonista protagonista, PersonajeCombatiente enemigo, Juego juego) {
 		this.protagonista = protagonista;
 		this.enemigo = enemigo;
-		this.condicionAtmos = DatosJuego.condicionesAtmosfericas.get((int) (Math.random() * DatosJuego.condicionesAtmosfericas.size()));
-		this.terreno = DatosJuego.tiposTerreno.get((int) (Math.random() * DatosJuego.tiposTerreno.size()));
-		this.momentoDia = DatosJuego.momentosDia.get((int) (Math.random() * DatosJuego.momentosDia.size()));
-	}
+		this.condicionAtmos = juego.getCondicionesAtmosfericas().get((int)(Math.random() * juego.getCondicionesAtmosfericas().size()));
+		this.terreno = juego.getTiposTerreno().get((int)(Math.random() * juego.getTiposTerreno().size()));
+		this.momentoDia = juego.getMomentosDia().get((int)(Math.random() * juego.getMomentosDia().size()));
+		}
 
 	private int calcularBonusAtaque() {
 		return condicionAtmos.getBonusAtaque() + terreno.getBonusAtaque() + momentoDia.getBonusAtaque();
@@ -43,15 +43,15 @@ public class Combate {
 		String tipoImpacto = determinarTipoImpacto();
 
 		switch (tipoImpacto.toLowerCase()) {
-			case "total":
-				return ataque.getDanho_total();
-			case "parcial":
-				return ataque.getDanho_parcial();
-			case "fallo":
-				return ataque.getDanho_fallo();
-			default:
-				System.out.println("Tipo de impacto inválido");
-				return 0;
+		case "total":
+			return ataque.getDanho_total();
+		case "parcial":
+			return ataque.getDanho_parcial();
+		case "fallo":
+			return ataque.getDanho_fallo();
+		default:
+			System.out.println("Tipo de impacto inválido");
+			return 0;
 		}
 	}
 
@@ -86,12 +86,14 @@ public class Combate {
 		return protagonista.getAtaque().get(eleccion);
 	}
 
+	// ENEMIGO HACE ATAQUE RANDOM
 	private Ataque elegirAtaqueAleatorio(PersonajeCombatiente enemigo) {
 		int numAtaques = enemigo.getAtaque().size();
 		int random = (int) (Math.random() * numAtaques);
 		return enemigo.getAtaque().get(random);
 	}
 
+	// CALCULAR DAÑO +/- BONUS
 	public int calcularDanhoTotal(Ataque ataque) {
 		int danhoBase = obtenerDanhoPorImpacto(ataque);
 		int bonusAtaque = calcularBonusAtaque();
@@ -111,119 +113,106 @@ public class Combate {
 		System.out.println("Ataque usado: " + ataqueElegido.getNombre());
 		System.out.println("Daño final calculado: " + danhoFinal);
 	}
-	
-	//CALCULAR ATAQUE - DEFENSA
+
+	// CALCULAR ATAQUE - DEFENSA
 	private int calcularDanhoNeto(int danhoBase, int bonusAtaque, int bonusDefensa) {
-	    int danhoNeto = danhoBase + bonusAtaque - bonusDefensa;
-//	    if (danhoNeto < 0) {
-//	        return 0;
-//	    } else {
-//	        return danhoNeto;
-//	    }
-	    return Math.max(0, danhoNeto);  
+		int danhoNeto = danhoBase + bonusAtaque - bonusDefensa;
+		if (danhoNeto < 0) {
+			return 0;
+		} else {
+			return danhoNeto;
+		}
+
 	}
 
-	//RESTAR VIDA
+	// RESTAR VIDA
 	private void restarVida(PersonajeCombatiente defensor, int danho) {
-	    int vidaActual = defensor.getVida();
-	    int vidaRestante;
+		int vidaActual = defensor.getVida();
+		int vidaRestante;
 
-	    if (vidaActual - danho < 0) {
-	        vidaRestante = 0;
-	    } else {
-	        vidaRestante = vidaActual - danho;
-	    }
+		if (vidaActual - danho < 0) {
+			vidaRestante = 0;
+		} else {
+			vidaRestante = vidaActual - danho;
+		}
 
-	    defensor.setVida(vidaRestante);
-	    System.out.println(defensor.getNombre() + " ha recibido " + danho + " de daño. Vida restante: " + vidaRestante);
+		defensor.setVida(vidaRestante);
+		System.out.println(defensor.getNombre() + " ha recibido " + danho + " de daño. Vida restante: " + vidaRestante);
 	}
 
-	//ATACA EL RPOTAGONISTA
+	// ATACA EL RPOTAGONISTA
 	public void turnoProtagonista() {
 		System.out.println("\n Es tu turno ---");
 		System.out.println("Vida actual del enemigo: " + enemigo.getVida());
-		//El jugador escoge ataque.
+
 		Ataque ataque = elegirAtaqueJugador();
-		//Se determina si impacta total, parcial o fallo.
+
 		int danhoBase = obtenerDanhoPorImpacto(ataque);
-		//Se suman bonus del entorno.
-	    int bonusAtaque = calcularBonusAtaque();
-	    
-	    int bonusDefensa = calcularBonusDefensa();
-	    //Calculamos el daño neto y se aplica al enemigo.
-	    int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
-	    //Se imprime resultado.
-	    restarVida(enemigo, danhoFinal);
+
+		int bonusAtaque = calcularBonusAtaque();
+
+		int bonusDefensa = calcularBonusDefensa();
+
+		int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
+
+		restarVida(enemigo, danhoFinal);
 	}
 
-	//ATACA EL ENEMIGO(AUTOMÁTICO)
+	// ATACA EL ENEMIGO(AUTOMÁTICO)
 	public void turnoEnemigo() {
 		System.out.println("\n--- Turno de " + enemigo.getNombre() + " ---");
 		System.out.println("Vida actual del jugador: " + protagonista.getVida());
-		 // 1. Elegir ataque aleatorio del enemigo
-	    Ataque ataque = elegirAtaqueAleatorio(enemigo);
 
-	    // 2. Calcular daño base por impacto
-	    int danhoBase = obtenerDanhoPorImpacto(ataque);
+		Ataque ataque = elegirAtaqueAleatorio(enemigo);
 
-	    // 3. Calcular bonificaciones del entorno
-	    int bonusAtaque = calcularBonusAtaque();
-	    int bonusDefensa = calcularBonusDefensa();
+		int danhoBase = obtenerDanhoPorImpacto(ataque);
 
-	    // 4. Calcular daño neto
-	    int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
+		int bonusAtaque = calcularBonusAtaque();
+		int bonusDefensa = calcularBonusDefensa();
 
-	    // 5. Aplicar daño al protagonista
-	    restarVida(protagonista, danhoFinal);
+		int danhoFinal = calcularDanhoNeto(danhoBase, bonusAtaque, bonusDefensa);
+
+		restarVida(protagonista, danhoFinal);
 	}
-	
-	//IMPRIMIR VIDA AMBOS
+
+	// IMPRIMIR VIDA AMBOS
 	private void imprimirVida() {
-	    System.out.println("\n====== ESTADO ACTUAL ======");
-	    System.out.println(protagonista.getNombre() + " - Vida: " + protagonista.getVida());
-	    System.out.println(enemigo.getNombre() + " - Vida: " + enemigo.getVida());
-	    System.out.println("===========================\n");
+		System.out.println("\n====== ESTADO ACTUAL ======");
+		System.out.println(protagonista.getNombre() + " - Vida: " + protagonista.getVida());
+		System.out.println(enemigo.getNombre() + " - Vida: " + enemigo.getVida());
+		System.out.println("===========================\n");
 	}
-	
-	//MÉTODO PARA COMPROBAR VIDAS
+
+	// MÉTODO PARA COMPROBAR VIDAS
 	private boolean finCombate() {
-	    if (protagonista.getVida() <= 1) {
-	        return true;
-	    }
-	    if (enemigo.getVida() <= 1) {
-	        return true;
-	    }
-	    return false;
+		if (protagonista.getVida() <= 1) {
+			return true;
+		}
+		if (enemigo.getVida() <= 1) {
+			return true;
+		}
+		return false;
 	}
-	
-	//COMBATE 
+
+	// COMBATE
 	public void combatir() {
-	    System.out.println("\n🔥 ¡Comienza el combate!");
-	    System.out.println("Entorno: " + condicionAtmos.getNombre() + ", " +
-	                       terreno.getNombre() + ", " +
-	                       momentoDia.getNombre());
+		System.out.println("¡Comienza el combate!/n" + "Entorno: " + condicionAtmos.getNombre() + ", "
+				+ terreno.getNombre() + ", " + momentoDia.getNombre());
+		while (!finCombate()) {
+			imprimirVida();
+			// Turno del jugador
+			turnoProtagonista();
+			// Solo se ejecuta el turno del enemigo si aún sigue el combate
+			if (!finCombate()) {
+				turnoEnemigo();
+			}
+		}
+		if (protagonista.getVida() <= 0) {
+			System.out.println(enemigo.getNombre() + " te ha derrotado");
+		} else {
+			System.out.println("Has derrotado a " + enemigo.getNombre());
+		}
 
-	    // Bucle del combate: se ejecuta mientras ambos estén vivos
-	    while (!finCombate()) {
-	        imprimirVida();
-
-	        // Turno del jugador
-	        turnoProtagonista();
-
-	        // Solo se ejecuta el turno del enemigo si aún sigue el combate
-	        if (!finCombate()) {
-	            turnoEnemigo();
-	        }
-	    }
-
-	    if (protagonista.getVida()<=0) {
-	    	System.out.println(enemigo.getNombre()+" te ha derrotado");
-	    } else {
-	    	System.out.println("Has derrotado a " + enemigo.getNombre());
-	    }
-	    
 	}
-
-
 
 }
