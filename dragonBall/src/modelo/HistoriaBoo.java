@@ -2,8 +2,7 @@ package modelo;
 
 public class HistoriaBoo {
 
-	   private Protagonista protagonista;
-	  
+	   private Protagonista protagonista;  
 	   private Juego juego;
 
 
