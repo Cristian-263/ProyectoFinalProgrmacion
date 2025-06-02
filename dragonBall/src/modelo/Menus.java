@@ -12,7 +12,7 @@ public class Menus {
 
 	}
 
-	public void menuLogin() throws SQLException {
+	public String menuLogin() throws SQLException {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("¿Qué quieres hacer?" + "\n 1.Registrarme" + "\n 2.Log in");
@@ -26,6 +26,8 @@ public class Menus {
 			String password = sc.nextLine();
 
 			dao.registrarUsuario(nombreUsuario, password);
+			
+			return nombreUsuario;
 		} else {
 			System.out.println("Introduce tu nombre de usuario");
 			String nombreUsuario = sc.nextLine();
@@ -33,6 +35,7 @@ public class Menus {
 			String password = sc.nextLine();
 
 			dao.loginUsuario(nombreUsuario, password);
+			return nombreUsuario;
 		}
 		
 	}

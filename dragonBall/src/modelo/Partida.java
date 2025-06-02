@@ -28,7 +28,7 @@ public class Partida {
 		this.puntuacion = puntuacion;
 	}
 	
-	public void añadirPuntos(int puntos) {
+	public void sumarPuntos(int puntos) {
 	    puntuacion += puntos;
 	}
 
