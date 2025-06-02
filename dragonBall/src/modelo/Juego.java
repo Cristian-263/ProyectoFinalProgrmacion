@@ -12,15 +12,14 @@ import daoDragonBall.DaoTipoTerreno;
 
 public class Juego {
 
+	
     private ArrayList<Protagonista> personajesProtagonistas;
     private ArrayList<PersonajeSecundario> personajesSecundarios;
     private ArrayList<PersonajeCombatiente> personajesEnemigos;
     private ArrayList<CondicionAtmosferica> condicionesAtmosfericas;
     private ArrayList<TipoTerreno> tiposTerreno;
     private ArrayList<MomentoDia> momentosDia;
- 
-    
- 
+
   
     public Juego() {
         
@@ -48,8 +47,7 @@ public class Juego {
     	momentosDia = new ArrayList<>(DaoMomentoDia.getInstance().obtenerMomentoDia());
         
     }
-    
-    
+
     private Protagonista buscarProtagonistaPorNombre(String nombre) {
         for (Protagonista prota : personajesProtagonistas) {
             if (prota.getNombre().equalsIgnoreCase(nombre)) {
