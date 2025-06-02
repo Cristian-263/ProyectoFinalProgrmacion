@@ -1,18 +1,19 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonajeCombatiente extends Personaje {
 
 	int vida;
-	List<Ataque> listaAtaques;
+	ArrayList<Ataque> listaAtaques;
 
 	// Constructor
 	public PersonajeCombatiente() {
 
 	}
 
-	public PersonajeCombatiente(String nombre, int vida, List<Ataque> listaAtaques) {
+	public PersonajeCombatiente(String nombre, int vida, ArrayList<Ataque> listaAtaques) {
 		super(nombre);
 		this.vida = vida;
 		this.listaAtaques = listaAtaques;

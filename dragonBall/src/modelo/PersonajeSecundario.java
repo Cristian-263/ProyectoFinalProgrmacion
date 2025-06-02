@@ -1,16 +1,16 @@
 package modelo;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PersonajeSecundario extends PersonajeCombatiente{
 	
-	List<String> frases;
+	ArrayList<String> frases;
 	
 	//Constructor
 	public PersonajeSecundario() {
 		
 	}
-	public PersonajeSecundario(String nombre, int vida,List<Ataque> listaAtaques, List<String> frases) {
+	public PersonajeSecundario(String nombre, int vida, ArrayList<Ataque> listaAtaques, ArrayList<String> frases) {
 		super(nombre, vida, listaAtaques);
 		this.frases = frases;
 	}

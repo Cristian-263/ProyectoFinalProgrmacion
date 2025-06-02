@@ -48,8 +48,8 @@ public class DaoPersonaje {
 
         return personajesProtagonistas;
     }
-    public List<PersonajeSecundario> obtenerSecundarios() throws SQLException {
-        List<PersonajeSecundario> personajesSecundarios = new ArrayList<>();
+    public ArrayList<PersonajeSecundario> obtenerSecundarios() throws SQLException {
+        ArrayList<PersonajeSecundario> personajesSecundarios = new ArrayList<>();
 
         String obtenerPersonajesSecundarios = "SELECT id, nombre, vida FROM personajes WHERE tipo = 'personajeSecundario'";
         PreparedStatement statement = conn.prepareStatement(obtenerPersonajesSecundarios);
@@ -62,7 +62,7 @@ public class DaoPersonaje {
             String nombre = rs.getString("nombre");
             int vida = rs.getInt("vida");
 
-            List<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
+            ArrayList<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
 
             PersonajeSecundario secundario = new PersonajeSecundario(nombre, vida, ataques, new ArrayList<>());
             personajesSecundarios.add(secundario);
@@ -74,8 +74,8 @@ public class DaoPersonaje {
         return personajesSecundarios;
     }
     
-    public List<PersonajeCombatiente> obtenerEnemigos() throws SQLException {
-        List<PersonajeCombatiente> personajesEnemigos = new ArrayList<>();
+    public ArrayList<PersonajeCombatiente> obtenerEnemigos() throws SQLException {
+        ArrayList<PersonajeCombatiente> personajesEnemigos = new ArrayList<>();
 
         String ontenerPersonajesEnemigos = "SELECT id, nombre, vida FROM personajes WHERE tipo = 'enemigo'";
         PreparedStatement statement = conn.prepareStatement(ontenerPersonajesEnemigos);
@@ -88,7 +88,7 @@ public class DaoPersonaje {
             String nombre = rs.getString("nombre");
             int vida = rs.getInt("vida");
 
-            List<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
+            ArrayList<Ataque> ataques = daoAtaque.obtenerAtaquesPorPersonaje(id);
 
             PersonajeCombatiente enemigo = new PersonajeCombatiente(nombre, vida, ataques);
             personajesEnemigos.add(enemigo);
