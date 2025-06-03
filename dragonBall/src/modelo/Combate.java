@@ -100,9 +100,9 @@ public class Combate {
 		int danhoFinal = danhoBase + bonusAtaque;
 
 		System.out.println("Daño base: " + danhoBase + " | Bonus ataque: " + bonusAtaque);
-		System.out.println("Daño final infligido: " + Math.max(0, danhoFinal));
+		System.out.println("Daño final infligido: " + Math.max(1, danhoFinal));
 
-		return Math.max(0, danhoFinal);
+		return Math.max(1, danhoFinal);
 	}
 
 	public void testCalculoDanhoJugador() {
