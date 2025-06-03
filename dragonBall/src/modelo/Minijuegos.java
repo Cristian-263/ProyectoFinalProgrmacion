@@ -65,7 +65,7 @@ public class Minijuegos {
 	            continue;
 	        }
 
-	        // 1 vence a 2, 2 vence a 3, 3 vence a 1
+
 	        if ((eleccionUsuario == 1 && eleccionSistema == 2) ||
 	            (eleccionUsuario == 2 && eleccionSistema == 3) ||
 	            (eleccionUsuario == 3 && eleccionSistema == 1)) {
