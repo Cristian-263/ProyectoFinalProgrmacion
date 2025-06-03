@@ -13,7 +13,6 @@ public class Ataque {
 	}
 	public Ataque(String nombre,  int danho_total, int danho_parcial, int danho_fallo ) {
 		this.nombre = nombre;
-		
 		this.danho_total = danho_total;
 		this.danho_parcial = danho_parcial;
 		this.danho_fallo = danho_fallo;

@@ -65,7 +65,7 @@ public class Combate {
 			System.out.println(i + ". " + ataque.getNombre());
 		}
 
-		int eleccion = -1;
+		int eleccion = 0;
 		boolean valido = false;
 
 		if (sc.hasNextInt()) {

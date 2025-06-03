@@ -36,7 +36,7 @@ public class HistoriaBoo {
 						""");
 	}
 
-	// DECISION 1: BABIDI
+	// DECISION OBECDECER A BABIDI 1
 	private void decision1() {
 
 		System.out.println("🤔 ¿Obedecerás a Babidi?");
@@ -61,6 +61,7 @@ public class HistoriaBoo {
 
 	}
 
+	// DESTRUIR CIUDAD 1 -- RAMA DESTRUCTORA
 	private void escenaDestruirCiudad() {
 		System.out.println("\n🛡️ Babidi te ordena destruir una ciudad.");
 		System.out.println("¿Cómo quieres hacerlo?");
@@ -88,6 +89,7 @@ public class HistoriaBoo {
 		}
 	}
 
+	// DABRA TE DESAFÍA -- RAMA DESTRUCTORA
 	private void escenaDabra() {
 		System.out.println("\n⚔️ Dabra, celoso de tu poder, aparece dispuesto a enfrentarte.");
 		System.out.println("¿Combatir con Dabra?");
@@ -126,6 +128,7 @@ public class HistoriaBoo {
 		obedecerABabidi2();
 	}
 
+	// DECISIÓN OBEDECER A BABIDI 2 -- RAMA DESTRUCTORA
 	private void obedecerABabidi2() {
 		System.out.println("\n📢 Babidi vuelve a contactar contigo a través de su magia.");
 		System.out.println("Babidi: \"¡Majin Boo! Debes seguir destruyendo. No te detengas. ¡Obedéceme!\"");
@@ -144,6 +147,7 @@ public class HistoriaBoo {
 		}
 	}
 
+	// DESTRUIR CIUDAD 2 -- RAMA DESTRUCTORA
 	private void escenaDestruirCiudad2() {
 		System.out.println("\n🌆 La ciudad se extiende ante ti, vibrante de vida... pero no por mucho tiempo.");
 		System.out.println(
@@ -170,6 +174,7 @@ public class HistoriaBoo {
 
 	}
 
+	// ESCENA ABSORBER A BABIDI -- RAMA DESTRUCTORA
 	private void escenaAbsorberBabidi() {
 
 		System.out.println("""
@@ -207,6 +212,7 @@ public class HistoriaBoo {
 		escenaCombateGokuVegeta();
 	}
 
+	// COMBATE VS GOHAN
 	private void escenaCombateGohan() {
 		System.out.println("Desde lejos, Gohan percibe una oleada de ki inmenso…");
 		System.out.println("""
@@ -231,6 +237,7 @@ public class HistoriaBoo {
 		}
 	}
 
+	// COMBATE VS GOKU Y VEGETA
 	private void escenaCombateGokuVegeta() {
 
 	}
