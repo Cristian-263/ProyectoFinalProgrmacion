@@ -28,7 +28,7 @@ public class PersonajeCombatiente extends Personaje {
 		this.vida = vida;
 	}
 
-	public List<Ataque> getAtaque() {
+	public ArrayList<Ataque> getAtaque() {
 		return listaAtaques;
 	}
 	

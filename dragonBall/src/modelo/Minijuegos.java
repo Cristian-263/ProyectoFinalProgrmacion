@@ -90,45 +90,6 @@ public class Minijuegos {
 	}
 
 	
-	public boolean buscarBolasDeDragon() {
-	    ArrayList<String> planetas = new ArrayList<>();
-	    planetas.add("Tierra");
-	    planetas.add("Namek");
-	    planetas.add("Vegeta");
-	    planetas.add("Vampa");
-	    planetas.add("Sadala");
-	    planetas.add("Yardrat");
-	    planetas.add("Beerus");
-	    planetas.add("Nuevo Namek");
-	    
-	    Random random = new Random();
-	    ArrayList<String> bolasElegidas = new ArrayList<>();
-	    while (bolasElegidas.size() < 3) {
-	        int bolaAleatoria = random.nextInt(planetas.size()); 
-	        String planetaElegido = planetas.get(bolaAleatoria);
-	        if (!bolasElegidas.contains(planetaElegido)) {
-	            bolasElegidas.add(planetaElegido);
-	        }
-	    }
-	    
-	    int intentos = 5;
-	    int encontradas = 0;
-	    
-	    Scanner sc = new Scanner(System.in);
-
-	    System.out.println("¡Comienza la búsqueda de las Bolas de Dragón!");
-	    System.out.println("Tres planetas tienen bolas ocultas. Tienes 5 intentos.\n");
-
-	    System.out.println("Planetas disponibles:");
-	    for (String p : planetas) {
-	        System.out.println("- " + p);
-	    }
-	    while (intentos > 0 && encontradas < 3) {
-	    	
-	    }
-	    return ;
-	    
-	 }	
 	
 	
 	

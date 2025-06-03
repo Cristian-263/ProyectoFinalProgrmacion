@@ -32,8 +32,8 @@ public class Main {
 	System.out.println(enemigo);
 	System.out.println("Vida protagonista: " + protagonista.getVida());
 	System.out.println("Vida enemigo: " + enemigo.getVida());
-//	Combate combate = new Combate(protagonista, enemigo, juego);
-//	combate.combatir();
+	Combate combate = new Combate(protagonista, enemigo, juego);
+	combate.combatir();
 	//INICIAMOS LA HISTORIA QUE ELIJA
 	switch (protagonista.getNombre().toLowerCase()) {
 	    case "goku":
