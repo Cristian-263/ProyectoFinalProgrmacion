@@ -27,7 +27,7 @@ public class Main {
 	
 	//EL USUARIO ELIGE SU PROTAGONISTA
 	Protagonista protagonista = juego.elegirProtagonistaInicial(); 
-	while (!fin) {
+	while (!fin && protagonista.getVida()>0) {
 	PersonajeCombatiente enemigo = juego.buscarEnemigoPorNombre("Majin Boo");
 	System.out.println(enemigo);
 	System.out.println("Vida protagonista: " + protagonista.getVida());

@@ -22,8 +22,8 @@ public class DaoTipoTerreno {
     }
     
 
-	public List<TipoTerreno> obtenerTipoTerreno() throws SQLException{
-		List<TipoTerreno> lista = new ArrayList<>();
+	public ArrayList<TipoTerreno> obtenerTipoTerreno() throws SQLException{
+		ArrayList<TipoTerreno> lista = new ArrayList<>();
 		String sql = "SELECT id, nombre, bonus_ataque, bonus_defensa FROM tipo_terreno";
 		PreparedStatement statement = conn.prepareStatement(sql);
         ResultSet rs = statement.executeQuery();
