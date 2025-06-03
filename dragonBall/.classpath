@@ -7,9 +7,13 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="C:/Users/Jorge/Desktop/librerias/mysql-connector-j-9.3.0.jar"/>
 =======
 	<classpathentry kind="lib" path="C:/Users/adria/OneDrive/Desktop/Librerías/mysql-connector-j-9.3.0.jar"/>
+>>>>>>> Stashed changes
+=======
+	<classpathentry kind="lib" path="C:/Users/usuario/Desktop/Librerias/mysql-connector-j-9.3.0.jar"/>
 >>>>>>> Stashed changes
 	<classpathentry kind="output" path="bin"/>
 </classpath>
