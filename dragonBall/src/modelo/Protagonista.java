@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 public class Protagonista extends PersonajeCombatiente {
 
-    
-    
-    
     //Constructor
     public Protagonista() {
     }
