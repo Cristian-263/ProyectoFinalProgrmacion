@@ -20,7 +20,6 @@ public class Main {
 	
 	//SE CREA LA PARTIDA PARA GUARDARLA FACILMENTE AL ACABAR
 	Partida partida = new Partida(usuario, 0, "");
-	
 	Juego juego = new Juego();
 	juego.inicializar();
 	
@@ -38,7 +37,7 @@ public class Main {
 	//INICIAMOS LA HISTORIA QUE ELIJA
 	switch (protagonista.getNombre().toLowerCase()) {
 	    case "goku":
-	        new HistoriaGoku(protagonista, juego).iniciar();
+	        new HistoriaGoku(protagonista, juego, partida).iniciar();
 	        fin = true;
 	        break;
 	    case "vegeta":
